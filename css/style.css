@@ -24,12 +24,6 @@ input,select, #button-converter {
     border-radius: 25px;
     margin-bottom: 15px;
 }
-.img-prin {
-    width: 250px;
-    height: 450px;
-    border: solid #0000ff5e 6px;
-
-}
 #result img {
     width: 50px;
     height: auto;
@@ -42,14 +36,4 @@ input,select, #button-converter {
     background-color: #0000ffde;
     color: white;
     display: none;
-}
-
-@media (max-width:650px) {
-    body {
-    background-image: url(/assets/icon.jpg);
-        background-attachment: fixed;
-    }
-    .img-prin {
-        display: none;
-    }
 }
