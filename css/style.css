@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    background: linear-gradient(#94bbe9, #eeaeca);
+    background: linear-gradient(#3a47b4, #ff5300);
     background-attachment: fixed;
 }
 article {
@@ -46,7 +46,7 @@ input,select, #button-converter {
 
 @media (max-width:650px) {
     body {
-    background-image: url(/assets/principal.jpg);
+    background-image: url(/assets/icon.jpg);
         background-attachment: fixed;
     }
     .img-prin {
