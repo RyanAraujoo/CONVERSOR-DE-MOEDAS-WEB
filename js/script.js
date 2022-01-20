@@ -1,3 +1,10 @@
+function fazGet(url) {
+    let request = new XMLHttpRequest()
+    request.open("GET", url, false)
+    request.send()
+    return request.responseText
+}
+
 function calculate() {
     var primaryValueSelect = document.getElementById("primary-value-select")
             if (primaryValueSelect.value.length == 0) {
@@ -16,10 +23,14 @@ function calculate() {
                 var secondaryValue = document.querySelector(".secondary-result-value")
                 
                 /* valores guardados em object/array */
+                let data = fazGet("http://economia.awesomeapi.com.br/json/last/BRL-USD,BRL-EUR,USD-BRL,USD-EUR,EUR-BRL,EUR-USD");
+                let coins = JSON.parse(data);
+                
+                console.log()
                 var valuecoin = {
-                    real: [0.18,0.16],
-                    dolar: [5.44,0.86],
-                    euro: [1.16,6.30],
+                    real: [coins.BRLUSD.bid,coins.BRLEUR.bid],
+                    dolar: [coins.USDBRL.bid,coins.USDEUR.bid],
+                    euro: [coins.EURUSD.bid,coins.EURBRL.bid],
                     format: function formatar(num) {return num * this.valuefirst }
                 }
                 valuecoin.valuefirst = primaryValueSelect.value
