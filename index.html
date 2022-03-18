@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang='pt-br'>
+
 <head>
     <meta charset='UTF-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,28 +9,29 @@
     <link rel="icon" href="./assets/icon.jpg">
     <script src='./js/script.js'></script>
 </head>
+
 <body>
     <section class="main-container">
         <article class='options-main-container'>
-                <h2>MS1 - Conversor de Moedas</h2>
-                <p>Converter <strong>de</strong></p>
-                <select name="" id="primary-select">
-                    <option value=""></option>
-                    <option value="real"> R$ Real Brasileiro </option>
-                    <option value="dolar"> US$ Dolár Americano</option>
-                    <option value="euro">Є Euro</option>
-                </select>
-                <label for="value"></label>
-                <p>Converter <strong>para</strong></p>
-                <select name="" id="secondary-select">
-                    <option value=""></option>
-                    <option value="dolar">US$ Dolár Americano</option>
-                    <option value="euro">Є Euro</option>
-                    <option value="real">R$ Real Brasileiro</option>
-                </select>
-                <p><strong>Valor</strong></p>
-                <input type="number" id='primary-value-select' placeholder="Ex: 10.000.00">
-                <input type="button" value="Converter" id='button-conv' onclick="calculateConvertion()">
+            <h2>MS1 - Conversor de Moedas</h2>
+            <p>Converter <strong>de</strong></p>
+            <select name="" id="primary-select">
+                <option value=""></option>
+                <option value="real"> R$ Real Brasileiro </option>
+                <option value="dolar"> US$ Dolár Americano</option>
+                <option value="euro">Є Euro</option>
+            </select>
+            <label for="value"></label>
+            <p>Converter <strong>para</strong></p>
+            <select name="" id="secondary-select">
+                <option value=""></option>
+                <option value="dolar">US$ Dolár Americano</option>
+                <option value="euro">Є Euro</option>
+                <option value="real">R$ Real Brasileiro</option>
+            </select>
+            <p><strong>Valor</strong></p>
+            <input type="number" id='primary-value-select' placeholder="Ex: 10.000.00">
+            <input type="button" value="Converter" id='button-conv' onclick="calculateConvertion()">
         </article>
         <article class='result-main-container'>
             <img class='primary-result-img' src="" alt="imagem-primeira-moeda-selecionada">
@@ -42,4 +44,5 @@
         </article>
     </section>
 </body>
+
 </html>

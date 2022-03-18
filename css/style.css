@@ -1,38 +1,43 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --white: #ffffff;
+  --blue: #0000ffc5;
 }
 body {
-    background-image: url(../assets/currency-background.jpg);
+  background-image: url(../assets/currency-background.jpg);
+  background-size: cover;
+  background-position-x: 40%;
 }
-.main-container-currency {
-    display: flex;
-    justify-content: center;
-    flex-flow: row wrap;
-    margin-top: 50px;
+.main-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 50px auto;
 }
-#container-currency {
-    background-color: #0000ffc5;
-    padding: 25px;
-    color: white;
+.options-main-container {
+  background-color: var(--blue);
+  padding: 25px;
+  color: var(--white);
 }
-.content-container-currency input, .content-container-currency select, #button-conv {
-    width: 100%;
-    height: 50px;
-    border-radius: 25px;
-    margin-bottom: 15px;
+input,
+select {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  margin-bottom: 15px;
 }
-#result-container-currency img {
-    width: 50px;
-    height: auto;
-    border-radius: 25px;
+.result-main-container img {
+  width: 50px;
+  border-radius: 25px;
 }
-#result-container-currency {
-    padding: 50px;
-    margin: 10px;
-    text-align: center;
-    background-color: #0000ffde;
-    color: white;
-    display: none;
+.result-main-container {
+  padding: 25px;
+  text-align: center;
+  background-color: var(--blue);
+  color: var(--white);
+  display: none;
 }

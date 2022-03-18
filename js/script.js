@@ -1,11 +1,3 @@
-/* function fazGet(url) {
-    let request = new XMLHttpRequest()
-    request.open("GET", url, false)
-    request.send()
-    return request.responseText
-}
-*/
-
 function calculate() {
     var primaryValueSelect = document.getElementById("primary-value-select")
             if (primaryValueSelect.value.length == 0) {
