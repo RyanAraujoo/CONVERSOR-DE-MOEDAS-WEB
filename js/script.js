@@ -1,85 +1,107 @@
-function calculate() {
-    var primaryValueSelect = document.getElementById("primary-value-select")
-            if (primaryValueSelect.value.length == 0) {
-                alert("Número não obtido!")
-            } else {
-                var primarySelect = document.getElementById("primary-select").value
-                var secondarySelect = document.getElementById("secondary-select").value
-                var result = document.getElementById("result-container-currency")
 
-                /* manipulação da section resultado */
-                var primaryImg = document.querySelector(".primary-result-img")
-                var primaryTxt = document.querySelector(".primary-result-txt")
-                var primaryValue = document.querySelector(".primary-result-value")
-                var secondaryImg = document.querySelector(".secondary-result-img")
-                var secondaryTxt = document.querySelector(".secondary-result-txt")
-                var secondaryValue = document.querySelector(".secondary-result-value")
-                
-                /* valores guardados em object/array */
-                // let data = fazGet("http://economia.awesomeapi.com.br/json/last/BRL-USD,BRL-EUR,USD-BRL,USD-EUR,EUR-BRL,EUR-USD");
-                // let coins = JSON.parse(data);
-                
-                console.log()
-                var valuecoin = {
-                    real: [0,20,0,18],
-                    dolar: [5,08,0,92],
-                    euro: [1,09,5,54],
-                    format: function formatar(num) {return num * this.valuefirst }
-                }
-                valuecoin.valuefirst = primaryValueSelect.value
-                switch(primarySelect) {
-                    case 'real': 
-                        if (secondarySelect == 'dolar') {
-                            real(primaryImg, primaryTxt)
-                            primaryValue.textContent = valuecoin.valuefirst
-                            dolar(secondaryImg, secondaryTxt)
-                            secondaryValue.textContent = valuecoin.format(valuecoin.real[0]).toLocaleString('en-us',{style: 'currency', currency: 'USD'})
-                        } else {    
-                            real(primaryImg, primaryTxt)
-                            primaryValue.textContent = valuecoin.valuefirst
-                            euro(secondaryImg, secondaryTxt)
-                            secondaryValue.textContent = valuecoin.format(valuecoin.real[1]).toLocaleString('es',{style: 'currency', currency: 'EUR'})
-                        } 
-                        break
-                    case 'dolar': 
-                         if (secondarySelect == 'real') {  
-                            dolar(primaryImg, primaryTxt)
-                            primaryValue.textContent = valuecoin.valuefirst
-                            real(secondaryImg, secondaryTxt)
-                            secondaryValue.textContent = valuecoin.format(valuecoin.dolar[0]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-                         } else {
-                            dolar(primaryImg, primaryTxt)
-                            primaryValue.textContent = valuecoin.valuefirst
-                            euro(secondaryImg, secondaryTxt)
-                            secondaryValue.textContent = valuecoin.format(valuecoin.dolar[1]).toLocaleString('es',{style: 'currency', currency: 'EUR'})
-                         }
-                        break
-                    case 'euro':
-                        if (secondarySelect == 'dolar') {
-                           euro(primaryImg, primaryTxt)
-                            primaryValue.textContent = valuecoin.valuefirst
-                           dolar(secondaryImg, secondaryTxt)
-                            secondaryValue.textContent = valuecoin.format(valuecoin.euro[0]).toLocaleString('en-us',{style: 'currency', currency: 'USD'})
-                        } else {
-                            euro(primaryImg, primaryTxt)
-                            primaryValue.textContent = valuecoin.valuefirst
-                            real(secondaryImg, secondaryTxt)
-                            secondaryValue.textContent = valuecoin.format(valuecoin.euro[1]).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-                        }
-            }
-            result.style.display = 'block' 
+function validationCalculate() {
+    let valueUser = document.getElementById("valueUser").value
+    let primarySelect = document.getElementById("primary-select").value
+    let secondarySelect = document.getElementById("secondary-select").value
+    try {
+        if (valueUser.length == 0) {
+            alert("Número incalculável!")
+        } else if (primarySelect == '' && primarySelect == 0) {
+            alert("Valor do primeiro select não definido!")
+        } else if (secondarySelect == '' && secondarySelect == 0) {
+            alert("Valor do segundo select não definido!")
+        } else if (primarySelect == secondarySelect) {
+            alert("Conversão não definida!")
+        } else {
+            return conversionCalculate(valueUser, primarySelect, secondarySelect)
+        }
+    } catch (error) { throw console.log(error) }
+}
+
+function conversionCalculate(valueUser, primarySelect, secondarySelect) {
+    let primaryImg = document.querySelector(".primary-result-img")
+    let primaryTxt = document.querySelector(".primary-result-txt")
+    let primaryValue = document.querySelector(".primary-result-value")
+    let secondaryImg = document.querySelector(".secondary-result-img")
+    let secondaryTxt = document.querySelector(".secondary-result-txt")
+    let secondaryValue = document.querySelector(".secondary-result-value")
+    //
+    let pageResult = document.querySelector(".result-main-container")
+
+    let valueCoin = {
+        real: [0.20, 0.18],
+        dolar: [5.08, 0.92],
+        euro: [1.09, 5.54],
+        coin: function formatar(num) { return num * this.valueUser },
+        valueUser: parseInt(valueUser)
     }
+    // console.log(typeof valueCoin.real[1] == typeof valueCoin.valueUser)
+    // console.log(typeof valueCoin.real[1])
+    //  console.log(typeof valueCoin.valueUser)
+    switch (primarySelect) {
+        case 'real':
+            if (secondarySelect == 'dolar') {
+                real(primaryImg, primaryTxt)
+                primaryValue.textContent = realFormat(valueCoin.valueUser)
+                dolar(secondaryImg, secondaryTxt)
+                secondaryValue.textContent = dolarFormat(valueCoin.coin(valueCoin.real[0]))
+            } else {
+                real(primaryImg, primaryTxt)
+                primaryValue.textContent = realFormat(valueCoin.valueUser)
+                euro(secondaryImg, secondaryTxt)
+                secondaryValue.textContent = euroFormat(valueCoin.coin(valueCoin.real[1]))
+            }
+            break
+        case 'dolar':
+            if (secondarySelect == 'real') {
+                dolar(primaryImg, primaryTxt)
+                primaryValue.textContent = dolarFormat(valueCoin.valueUser)
+                real(secondaryImg, secondaryTxt)
+                secondaryValue.textContent = realFormat(valueCoin.coin(valueCoin.dolar[0]))
+            } else {
+                dolar(primaryImg, primaryTxt)
+                primaryValue.textContent = dolarFormat(valueCoin.valueUser)
+                euro(secondaryImg, secondaryTxt)
+                secondaryValue.textContent = euroFormat(valueCoin.coin(valueCoin.dolar[1]))
+            }
+            break
+        default:
+            if (secondarySelect == 'dolar') {
+                euro(primaryImg, primaryTxt)
+                primaryValue.textContent = euroFormat(valueCoin.valueUser)
+                dolar(secondaryImg, secondaryTxt)
+                secondaryValue.textContent = dolarFormat(valueCoin.coin(valueCoin.euro[0]))
+            } else {
+                euro(primaryImg, primaryTxt)
+                primaryValue.textContent = euroFormat(valueCoin.valueUser)
+                real(secondaryImg, secondaryTxt)
+                secondaryValue.textContent = realFormat(valueCoin.coin(valueCoin.euro[1]))
+            }
+    }
+    pageResult.style.display = 'block'
 }
 
-const real = (xreal,yreal) => {
-     xreal.src = './assets/br.jpg'
-     yreal.textContent = 'Real(BR)'
+const real = (xreal, yreal) => {
+    xreal.src = './assets/br.jpg'
+    yreal.textContent = 'Real(BR)'
 }
-const dolar = (xdolar,ydolar) => {
+const dolar = (xdolar, ydolar) => {
     xdolar.src = './assets/dolar-eua.jpg'
     ydolar.textContent = 'Dolar'
 }
 const euro = (xeuro, yeuro) => {
     xeuro.src = './assets/euro.jpg'
     yeuro.textContent = 'Euro'
+}
+
+const realFormat = (x) => {
+    return x.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+}
+
+const dolarFormat = (x) => {
+    return x.toLocaleString('en-us', { style: 'currency', currency: 'USD' })
+}
+
+const euroFormat = (x) => {
+    return x.toLocaleString('es', { style: 'currency', currency: 'EUR' })
 }
