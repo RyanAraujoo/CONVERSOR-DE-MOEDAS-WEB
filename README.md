@@ -8,11 +8,13 @@
   <img align="center" alt="Ryan-Js" height="100" width="100" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
 </div>
 
- <h2>OBJETIVOS ALCANÇADOS</h2>
+ <h2>OBJETIVOS</h2>
  <ul>
-  <li>Css mais fácil de ser lido e compreensível</li> 
-  <li>Html mais semântico e didático</li>
-  <li>Atualização dos valores em tempo real por API</li>
+  <li>LINGUAGUEM WEB LIMPA E COMPREENSÍVEL</li> 
+  <li>VALIDAÇÃO DOS INPUT</li>
+    <ol>
+      <li>ACEITAR APENAS TIPO NUMBER</li>
+    </ol>
+  <li>SCRIPT MAIS FLEXÍVEL E LIMPO IMPLEMENTADO JUNTO A TESTES (TRY/CATCH) </li>
+  <li>ATUALIZAÇÃO DAS MOEDAS VIA API (SISTEMA BACK END PRONTO ?)</li>
   </ul>
-  créditos: 
-  <p>https://www.eurodicas.com.br/conversor-de-moeda/#:~:text=O%20conversor%20de%20moeda%20online,com%20moeda%20saiam%20do%20esperado.</p>
