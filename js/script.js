@@ -33,7 +33,7 @@ function conversionCalculate(valueUser, primarySelect, secondarySelect) {
         dolar: [5.08, 0.92],
         euro: [1.09, 5.54],
         coin: function formatar(num) { return num * this.valueUser },
-        valueUser: parseInt(valueUser)
+        valueUser: parseFloat(valueUser)
     }
     // console.log(typeof valueCoin.real[1] == typeof valueCoin.valueUser)
     // console.log(typeof valueCoin.real[1])
