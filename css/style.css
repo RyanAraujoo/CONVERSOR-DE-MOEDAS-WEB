@@ -3,14 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-:root {
-  --white: #ffffff;
-  --blue: #0000ffc5;
-}
 body {
   background-image: url(../assets/currency-background.jpg);
   background-size: cover;
   background-position-x: 40%;
+  background-attachment: fixed;
 }
 .main-container {
   display: flex;
@@ -19,7 +16,8 @@ body {
   margin: 50px auto;
 }
 .options-main-container {
-  background-color: var(--blue);
+  background: rgb(170,158,158);
+  background: linear-gradient(90deg, rgba(170,158,158,1) 0%, rgba(254,255,0,1) 100%);
   padding: 25px;
   color: var(--white);
 }
@@ -33,11 +31,13 @@ select {
 .result-main-container img {
   width: 50px;
   border-radius: 25px;
+  display: block;
+  margin: 15px auto;
 }
 .result-main-container {
-  padding: 25px;
+  padding: 50px;
   text-align: center;
-  background-color: var(--blue);
-  color: var(--white);
+  background: rgb(255,252,0);
+  background: linear-gradient(90deg, rgba(255,252,0,1) 0%, rgba(241,241,241,1) 100%);
   display: none;
 }
