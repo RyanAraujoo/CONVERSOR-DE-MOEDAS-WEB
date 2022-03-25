@@ -17,7 +17,6 @@ function validationCalculate() {
         }
     } catch (error) { throw console.log(error) }
 }
-
 function conversionCalculate(valueUser, primarySelect, secondarySelect) {
     let primaryImg = document.querySelector(".primary-result-img")
     let primaryTxt = document.querySelector(".primary-result-txt")
@@ -27,6 +26,24 @@ function conversionCalculate(valueUser, primarySelect, secondarySelect) {
     let secondaryValue = document.querySelector(".secondary-result-value")
     //
     let pageResult = document.querySelector(".result-main-container")
+    // consumo da api falied.
+        const getCoin = async () => {
+           var data = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,USD-EUR,EUR-USD,EUR-BRL,BRL-USD,BRL-EUR/')
+            .then(res => res.json())
+            .then (r => {
+              let objCoin = {
+                BRL: [r.BRLUSD.bid,r.BRLEUR.bid],
+                USD: [r.USDBRL.bid, r.USDEUR.bid],
+                EUR: [r.EURUSD.bid, r.EURBRL.bid]
+
+               }
+               return objCoin            
+            })
+            .catch(e => console.log(e))
+            console.log(data)
+            return data
+    }
+    //
 
     let valueCoin = {
         real: [0.20, 0.18],
